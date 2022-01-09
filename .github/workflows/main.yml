@@ -17,7 +17,6 @@ jobs:
           heroku_email: "saurabhdutta.jk@gmail.com"
           usedocker: true
         env:
-          ROOT_URL: ${APP_ROOT_URL:-https://alterest-todos.herokuapp.com}
+          ROOT_URL: "https://alterest-todos.herokuapp.com"
           MONGO_URL: "mongodb+srv://meteor:${{secrets.MONGO_METEOR_PASS}}@cluster0.sli2u.mongodb.net/meteor"
           MONGO_OPLOG_URL: "mongodb+srv://meteor:${{secrets.MONGO_METEOR_PASS}}@cluster0.sli2u.mongodb.net/local"
-          PORT: 3000
