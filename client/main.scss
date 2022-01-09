@@ -1,0 +1,70 @@
+/* CSS declarations go here */
+@import "~/bootstrap/scss/bootstrap";
+
+body {
+  min-height: 100vh;
+}
+
+.task-section,
+.option-section {
+  width: 100%;
+}
+@include media-breakpoint-up(sm) {
+  .task-section,
+  .option-section {
+    width: 550px;
+  }
+}
+
+form.new-task .btn {
+  line-height: 1;
+  .feather {
+    height: 24px;
+  }
+}
+
+li.checked {
+  color: #888;
+  .text {
+    text-decoration: line-through;
+  }
+}
+
+.is-private {
+  display: none;
+}
+.btn.private .is-private {
+  display: block;
+}
+
+.is-public {
+  display: block;
+}
+.btn.private .is-public {
+  display: none;
+}
+
+// Override Account UI by Meteor
+.login-button,
+.login-link-text {
+  @extend .btn;
+  @extend .btn-primary;
+  color: $light !important;
+  background-color: var(--bs-primary) !important;
+  border-color: var(--bs-primary) !important;
+  font-size: 1rem !important;
+  width: 100% !important;
+}
+
+.login-close-text,
+.login-link-text {
+  text-decoration: none !important;
+}
+
+.login-close-text {
+  float: right !important;
+}
+
+.accounts-dialog {
+  @extend .shadow-sm;
+}
