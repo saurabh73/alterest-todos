@@ -12,7 +12,7 @@
   "extends": ["plugin:meteor/recommended", "airbnb"],
   "rules": {
     "quotes": ["error", "double"],
-    "func-names": ["error", "never"],
+    "func-names": ["error", "as-needed"],
     "import/no-unresolved": ["error", { "ignore": ["^meteor/", "^/"] }],
     "comma-dangle": [
       "error",
