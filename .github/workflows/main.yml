@@ -1,4 +1,4 @@
-name: Deploy
+name: Build and Deploy
 
 on:
   push:
@@ -10,13 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12
+      - name: Install modules
+        run: npm install
+      - name: Run ESLint
+        run: npm lint
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build, Push and Deploy to Heroku # set whatever name you want to this step
+        id: heroku
+        uses: jctaveras/heroku-deploy@v1.0.0 # use the latest version of the action
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "alterest-todos"
-          heroku_email: "saurabhdutta.jk@gmail.com"
-          usedocker: true
-        env:
-          ROOT_URL: "https://alterest-todos.herokuapp.com"
-          MONGO_URL: "mongodb+srv://meteor:${{secrets.MONGO_METEOR_PASS}}@cluster0.sli2u.mongodb.net/meteor"
-          MONGO_OPLOG_URL: "mongodb+srv://meteor:${{secrets.MONGO_METEOR_PASS}}@cluster0.sli2u.mongodb.net/local"
+          email: "saurabhdutta.jk@gmail.com" # your heroku email
+          api_key: ${{ secrets.HEROKU_API_KEY }} # your heroku api key
+          app_name: "alterest-todos" # you aplication name

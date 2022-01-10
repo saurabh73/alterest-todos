@@ -17,14 +17,14 @@ Template.task.helpers({
 });
 
 Template.task.events({
-  "click .toggle-checked": () => {
+  "click .toggle-checked": function () {
     // Set the checked property to the opposite of its current value
     Meteor.call("tasksSetChecked", this._id, !this.checked);
   },
-  "click .delete": () => {
+  "click .delete": function () {
     Meteor.call("tasksRemove", this._id);
   },
-  "click .toggle-private": () => {
+  "click .toggle-private": function () {
     Meteor.call("tasksSetPrivate", this._id, !this.private);
   },
 });
