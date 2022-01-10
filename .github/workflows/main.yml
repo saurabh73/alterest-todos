@@ -25,3 +25,4 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "alterest-todos" #Must be unique in Heroku
           heroku_email: "saurabhdutta.jk@gmail.com"
+          usedocker: true
