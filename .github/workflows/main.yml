@@ -19,10 +19,9 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v2
-      - name: Build, Push and Deploy to Heroku # set whatever name you want to this step
-        id: heroku
-        uses: jctaveras/heroku-deploy@v1.0.0 # use the latest version of the action
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        name: Build, Push and Deploy to Heroku
         with:
-          email: "saurabhdutta.jk@gmail.com" # your heroku email
-          api_key: ${{ secrets.HEROKU_API_KEY }} # your heroku api key
-          app_name: "alterest-todos" # you aplication name
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "alterest-todos" #Must be unique in Heroku
+          heroku_email: "saurabhdutta.jk@gmail.com"
