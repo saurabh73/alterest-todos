@@ -1,11 +1,13 @@
 # Alterest Todos
-Simple todos app built with metor and blaze
+[![Build and Deploy](https://github.com/saurabh73/alterest-todos/actions/workflows/main.yml/badge.svg?branch=master&event=push)](https://github.com/saurabh73/alterest-todos/actions/workflows/main.yml)
+Simple todos app built with metor and blaze.
+
+Live Link: [https://alterest-todos.herokuapp.com/](https://alterest-todos.herokuapp.com/)
 
 ## Interface
 
 ![Anonymous User](https://res.cloudinary.com/dren4jgbp/image/upload/c_scale,w_300/v1641846717/alterest/scree1.png)
 ![Logged-in User](https://res.cloudinary.com/dren4jgbp/image/upload/c_scale,w_300/v1641846906/alterest/screen2.png)
-
 
 ## Local Testing
 

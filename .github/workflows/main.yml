@@ -26,9 +26,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Docker build
+      - name: Docker Login
         run: docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
-      - name: Publish # Push the Docker image to Heroku Container Registry
+      - name: Docker Build & Publish # Push the Docker image to Heroku Container Registry
         run: |
           heroku container:push web -a $APP_NAME
           heroku container:release web -a $APP_NAME
