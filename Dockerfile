@@ -55,4 +55,10 @@ COPY --from=1 $APP_BUNDLE_FOLDER/bundle $APP_BUNDLE_FOLDER/bundle/
 # Start app
 ENTRYPOINT ["/docker/entrypoint.sh"]
 
-CMD ["node", "main.js", "-b", "0.0.0.0:$PORT"]
+EXPOSE 3000
+EXPOSE $PORT
+
+ARG APP_ROOT_URL=http://localhost
+ENV ROOT_URL ${APP_ROOT_URL}
+
+CMD ["node", "main.js"]

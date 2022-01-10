@@ -16,6 +16,17 @@ body {
   }
 }
 
+.form-switch {
+  padding-left: 0;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 100%;
+  .form-check-input {
+    margin-left: 10px;
+  }
+}
+
 form.new-task .btn {
   line-height: 1;
   .feather {

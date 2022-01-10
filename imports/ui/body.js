@@ -2,8 +2,13 @@ import { Template } from "meteor/templating";
 import { Meteor } from "meteor/meteor";
 import { ReactiveDict } from "meteor/reactive-dict";
 import { Tasks } from "../api/tasks.js";
-import "./task.js";
+
 import "./body.html";
+import "./hide-task-checkbox.html";
+import "./new-task-form.html";
+
+import "./header.js";
+import "./task.js";
 
 Template.body.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
@@ -23,18 +28,6 @@ Template.body.helpers({
     // Otherwise, return all of the tasks
     return Tasks.find({}, { sort: { createdAt: -1 } });
   },
-  incompleteCount() {
-    return Tasks.find({ checked: { $ne: true } }).count();
-  },
-  dateToday() {
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    };
-    const today = new Date();
-    return today.toLocaleDateString("en-US", options);
-  },
 });
 
 Template.body.events({
@@ -47,7 +40,7 @@ Template.body.events({
     const text = target.text.value;
 
     // Insert a task into the collection
-    Meteor.call("tasks.insert", text);
+    Meteor.call("tasksInsert", text);
 
     // Clear form
     target.text.value = "";

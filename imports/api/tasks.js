@@ -14,9 +14,8 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-  "tasks.insert"(task) {
+  tasksInsert(task) {
     check(task, String);
-
     // Make sure the user is logged in before inserting a task
     if (!this.userId) {
       throw new Meteor.Error("not-authorized");
@@ -31,7 +30,7 @@ Meteor.methods({
       username: Meteor.users.findOne(this.userId).username,
     });
   },
-  "tasks.remove"(taskId) {
+  tasksRemove(taskId) {
     check(taskId, String);
     const task = Tasks.findOne(taskId);
     if (task.private && task.owner !== this.userId) {
@@ -41,7 +40,7 @@ Meteor.methods({
 
     Tasks.remove(taskId);
   },
-  "tasks.setChecked"(taskId, setChecked) {
+  tasksSetChecked(taskId, setChecked) {
     check(taskId, String);
     check(setChecked, Boolean);
     const task = Tasks.findOne(taskId);
@@ -52,7 +51,7 @@ Meteor.methods({
 
     Tasks.update(taskId, { $set: { checked: setChecked } });
   },
-  "tasks.setPrivate"(taskId, setToPrivate) {
+  tasksSetPrivate(taskId, setToPrivate) {
     check(taskId, String);
     check(setToPrivate, Boolean);
 
