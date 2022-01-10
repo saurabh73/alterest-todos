@@ -1,14 +1,14 @@
 import { Template } from "meteor/templating";
 import { Meteor } from "meteor/meteor";
 import { ReactiveDict } from "meteor/reactive-dict";
-import { Tasks } from "../api/tasks.js";
+import Tasks from "../api/tasks";
 
 import "./body.html";
 import "./hide-task-checkbox.html";
 import "./new-task-form.html";
 
-import "./header.js";
-import "./task.js";
+import "./header";
+import "./task";
 
 Template.body.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
@@ -21,22 +21,22 @@ Template.body.helpers({
     if (instance.state.get("hideCompleted")) {
       // If hide completed is checked, filter tasks
       return Tasks.find(
-        { checked: { $ne: true } },
-        { sort: { createdAt: -1 } }
+        { checked: { $ne: true, }, },
+        { sort: { createdAt: -1, }, }
       );
     }
     // Otherwise, return all of the tasks
-    return Tasks.find({}, { sort: { createdAt: -1 } });
+    return Tasks.find({}, { sort: { createdAt: -1, }, });
   },
 });
 
 Template.body.events({
-  "submit .new-task"(event) {
+  "submit .new-task": (event) => {
     // Prevent default browser form submit
     event.preventDefault();
 
     // Get value from form element
-    const target = event.target;
+    const { target, } = event;
     const text = target.text.value;
 
     // Insert a task into the collection
@@ -45,7 +45,7 @@ Template.body.events({
     // Clear form
     target.text.value = "";
   },
-  "change .hide-completed input"(event, instance) {
-    instance.state.set("hideCompleted", event.target.checked);
+  "change .hide-completed input": (event, templateInstance) => {
+    templateInstance.state.set("hideCompleted", event.target.checked);
   },
 });

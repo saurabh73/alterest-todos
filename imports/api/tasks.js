@@ -2,13 +2,16 @@ import { Meteor } from "meteor/meteor";
 import { Mongo } from "meteor/mongo";
 import { check } from "meteor/check";
 
-export const Tasks = new Mongo.Collection("tasks");
+const Tasks = new Mongo.Collection("tasks");
 
 if (Meteor.isServer) {
   // This code only runs on the server
   Meteor.publish("tasks", function tasksPublication() {
     return Tasks.find({
-      $or: [{ private: { $ne: true } }, { owner: this.userId }],
+      $or: [
+        { private: { $ne: true, }, },
+        { owner: this.userId, },
+      ],
     });
   });
 }
@@ -49,7 +52,7 @@ Meteor.methods({
       throw new Meteor.Error("not-authorized");
     }
 
-    Tasks.update(taskId, { $set: { checked: setChecked } });
+    Tasks.update(taskId, { $set: { checked: setChecked, }, });
   },
   tasksSetPrivate(taskId, setToPrivate) {
     check(taskId, String);
@@ -61,6 +64,8 @@ Meteor.methods({
       throw new Meteor.Error("not-authorized");
     }
 
-    Tasks.update(taskId, { $set: { private: setToPrivate } });
+    Tasks.update(taskId, { $set: { private: setToPrivate, }, });
   },
 });
+
+export default Tasks;

@@ -1,10 +1,10 @@
 import { Template } from "meteor/templating";
-import { Tasks } from "../api/tasks.js";
+import Tasks from "../api/tasks";
 import "./header.html";
 
 Template.header.helpers({
   incompleteCount() {
-    return Tasks.find({ checked: { $ne: true } }).count();
+    return Tasks.find({ checked: { $ne: true, }, }).count();
   },
   dateToday() {
     const options = {

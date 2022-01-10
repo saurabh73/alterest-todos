@@ -1,0 +1,28 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "meteor": true
+  },
+  "plugins": ["meteor"],
+  "extends": ["plugin:meteor/recommended", "airbnb"],
+  "rules": {
+    "quotes": ["error", "double"],
+    "no-console":  "off",
+    "import/no-unresolved": ["error", { "ignore": ["^meteor/", "^/"] }],
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "always",
+        "objects": "always",
+        "imports": "never",
+        "exports": "never",
+        "functions": "never"
+      }
+    ]
+  }
+}

@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { Template } from "meteor/templating";
 import { Meteor } from "meteor/meteor";
 import * as feather from "feather-icons";
@@ -16,18 +17,18 @@ Template.task.helpers({
 });
 
 Template.task.events({
-  "click .toggle-checked"() {
+  "click .toggle-checked": () => {
     // Set the checked property to the opposite of its current value
     Meteor.call("tasksSetChecked", this._id, !this.checked);
   },
-  "click .delete"() {
+  "click .delete": () => {
     Meteor.call("tasksRemove", this._id);
   },
-  "click .toggle-private"() {
+  "click .toggle-private": () => {
     Meteor.call("tasksSetPrivate", this._id, !this.private);
   },
 });
 
 Template.task.onRendered(() => {
-  feather.replace({ height: "16px" });
+  feather.replace({ height: "16px", });
 });
