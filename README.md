@@ -1,5 +1,6 @@
 # Alterest Todos
 [![Build and Deploy](https://github.com/saurabh73/alterest-todos/actions/workflows/main.yml/badge.svg?branch=master&event=push)](https://github.com/saurabh73/alterest-todos/actions/workflows/main.yml)
+
 Simple todos app built with metor and blaze.
 
 Live Link: [https://alterest-todos.herokuapp.com/](https://alterest-todos.herokuapp.com/)
@@ -22,3 +23,5 @@ docker-compose up
 ```
 
 ### Github Workflow
+![Github Workflow](https://res.cloudinary.com/dren4jgbp/image/upload/c_scale,w_800/v1641875231/alterest/pipeline.png)
+
