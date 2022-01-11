@@ -9,7 +9,7 @@
     "meteor": true
   },
   "plugins": ["meteor"],
-  "extends": ["plugin:meteor/recommended", "airbnb"],
+  "extends": ["plugin:meteor/recommended", "plugin:import/recommended", "airbnb"],
   "rules": {
     "quotes": ["error", "double"],
     "func-names": ["error", "as-needed"],

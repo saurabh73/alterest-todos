@@ -1,14 +1,13 @@
 import { Template } from "meteor/templating";
 import { Meteor } from "meteor/meteor";
 import { ReactiveDict } from "meteor/reactive-dict";
+
 import Tasks from "../api/tasks";
-
-import "./body.html";
-import "./hide-task-checkbox.html";
-import "./new-task-form.html";
-
 import "./header";
 import "./task";
+import "./new-task-form";
+
+import "./body.html";
 
 Template.body.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
@@ -31,20 +30,6 @@ Template.body.helpers({
 });
 
 Template.body.events({
-  "submit .new-task": (event) => {
-    // Prevent default browser form submit
-    event.preventDefault();
-
-    // Get value from form element
-    const { target, } = event;
-    const text = target.text.value;
-
-    // Insert a task into the collection
-    Meteor.call("tasksInsert", text);
-
-    // Clear form
-    target.text.value = "";
-  },
   "change .hide-completed input": (event, templateInstance) => {
     templateInstance.state.set("hideCompleted", event.target.checked);
   },
